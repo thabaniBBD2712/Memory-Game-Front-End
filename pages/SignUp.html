@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Form</title>
+    <link rel="stylesheet" href="../css/SignUp.css">
+    <script src="../js/SignUp.js"></script>
+  </head>
+  <body>
+    <section class="container">
+      <section class="form-box">
+        <h1 class="title">Sign Up</h1>
+        <form onsubmit="return false;">
+          <section class="input-group">
+            <section class="input-field" id="firstnameField">
+              <input class="input" type="text" name="firstname" placeholder="Firstname">
+            </section>
+
+            <section class="input-field" id="surnameField">
+              <input class="input" type="text" name="surname" placeholder="Surname">
+            </section>
+
+            <section class="input-field">
+              <input class="input" type="email" name="email" placeholder="Email">
+            </section>
+
+            <section class="input-field">
+              <input class="input" type="password" name="password" placeholder="Password">
+            </section>
+
+            <section class="input-field">
+                <input class="input" type="password" name="password-confirm" placeholder="Confirm Password">
+              </section>
+            
+            <p class="link">Lost password <a href="https://example.com/password-reset">Click Here!</a></p>
+          </section>
+          <section class="btn-group">
+            <button class="button signup-btn" type="submit" onclick="return signUp();">Sign up</button>
+            <button class="button signin-btn disabled" type="submit" onclick="return signIn();">Sign in</button>
+          </section>
+        </form>
+      </section>
+    </section>
+  </body>
+</html>
