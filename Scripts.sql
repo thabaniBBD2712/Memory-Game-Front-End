@@ -12,8 +12,7 @@ CREATE TABLE Users (
 CREATE TABLE Score (
   user_email varchar(50) PRIMARY KEY,
   score int DEFAULT 0,
-  achieved_on timestamp DEFAULT CURRENT_TIMESTAMP,
-
+  achievedOn timestamp DEFAULT GETDATE(),
   CONSTRAINT fk_user_email
     FOREIGN KEY (user_email)
     REFERENCES Users(email),
