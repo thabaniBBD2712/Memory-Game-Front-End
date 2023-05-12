@@ -10,13 +10,20 @@
     <section class="container">
       <section class="form-box">
         <h1 class="title">Sign Up</h1>
-        <form onsubmit="return false;">
+        <section id="errorMsg"></section>
+        <form
+          class="signup"
+          name="signupForm"
+          onsubmit="return validateSignupForm()"
+          method="POST"
+        >
           <section class="input-group">
             <section class="input-field" id="firstnameField">
               <input
                 class="input"
                 type="text"
                 name="firstname"
+                id="firstname"
                 placeholder="Firstname"
               />
             </section>
@@ -26,6 +33,7 @@
                 class="input"
                 type="text"
                 name="surname"
+                id="surname"
                 placeholder="Surname"
               />
             </section>
@@ -35,6 +43,7 @@
                 class="input"
                 type="email"
                 name="email"
+                id="email"
                 placeholder="Email"
               />
             </section>
@@ -44,6 +53,7 @@
                 class="input"
                 type="password"
                 name="password"
+                id="password"
                 placeholder="Password"
               />
             </section>
@@ -53,6 +63,7 @@
                 class="input"
                 type="password"
                 name="password-confirm"
+                id="password-confirm"
                 placeholder="Confirm Password"
               />
             </section>
@@ -66,16 +77,9 @@
             <button
               class="button signup-btn"
               type="submit"
-              onclick="return signUp();"
+              onclick="return validateSignupForm();"
             >
               Sign up
-            </button>
-            <button
-              class="button signin-btn disabled"
-              type="submit"
-              onclick="return signIn();"
-            >
-              Sign in
             </button>
           </section>
         </form>
