@@ -5,7 +5,8 @@
     <meta name="description" content="This is the login page for the memory game.">
     <title>Image Memory Game</title>
     <link rel="shortcut icon" href="favicon-32x32.png" type="image/png">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css" href="../css/loginstyle.css" /> 
+    <script src="../js/Login.js"></script>
 </head>
 <body>
     <main class="container">
@@ -14,17 +15,31 @@
                 <figure class="card-front">
                     <h2>Login Page</h2>
                     <form action="/login-page" method="post">
-                        <label for="email">Username</label>
-                        <input type="email" id="email" required>
-                        <label for="password">Password</label>
-                        <input type="password" id="password" required>
-                        <button type="submit">Submit</button>
-                        <label>
-                            <input type="checkbox" name="remember">
-                            <strong>Remember Me<strong>
-                        </label>
+                        <section>
+                            <label for="email">Email</label>
+                        </section>
+                        <section>
+                            <input type="email" id="email" name="email" required>
+                        </section>
+                        <section>
+                            <label for="password">Password</label>
+                        </section>
+                        <section>
+                            <input type="password" id="password" name="password" required>
+                        </section>
+                        <section>
+                            <button type="submit">Submit</button>
+                        </section>
+                        <section>
+                            <label>
+                                <input type="checkbox" id="checkbox" name="remember">
+                                <strong>Remember Me<strong>
+                            </label>
+                        </section>        
                     </form>
-                    <button type="button" class="btn" onclick="openRegister()">I'm new here</button>
+                    <section>
+                     <button type="button" class="btn" onclick="openRegister()">I'm new here</button>
+                    </section>
                 </figure>
             </section>
         </section>
