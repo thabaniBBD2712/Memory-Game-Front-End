@@ -5,8 +5,7 @@ A Memory Game API is an interface that allows developers to build a memory game 
 
 ## Prerequisites
 * Node.js
-
-
+* Naming Standard (CamelCase)
 ### Initialising DB
 1. Open your favourite SQL Server manager and connect to `(localdb)\MSSQLLocalDB` 
 2. Run script `db\CreateStatement.sql` to create database and tables
