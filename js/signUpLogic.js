@@ -32,6 +32,7 @@ function validateSignupForm() {
 	}
 	else {
 		alert("Successfully signed up");
+		//Jacuzzi's function of signing in.
 		return true;
 	}
 }
