@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Form</title>
+    <link rel="stylesheet" href="../css/SignUp.css" />
+    <script src="../js/Login.js"></script>
+  </head>
+  <body>
+    <section class="container">
+      <section class="form-box">
+        <h1 class="title">Login</h1>
+        <section id="errorMsg"></section>
+        <form
+          class="signup"
+          name="signupForm"
+          onsubmit="return validateLoginForm()"
+          method="POST"
+        >
+          <section class="input-group">
+            <section class="input-field">
+              <input
+                class="input"
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Email"
+              />
+            </section>
+
+            <section class="input-field">
+              <input
+                class="input"
+                type="password"
+                name="password"
+                id="password"
+                placeholder="Password"
+              />
+            </section>
+
+          </section>
+
+          <section class="btn-group">
+            <button
+              class="button login-btn"
+              type="submit"
+              onclick="return validateLoginForm();"
+            >
+              Login
+            </button>
+          </section>
+          <p class="link">
+            Lost password
+            <a href="https://example.com/password-reset">Click Here!</a>
+          </p>
+          <p class="link">
+            New here
+            <a href="../pages/SignUp.html">Click Here!</a>
+          </p>
+        </form>
+      </section>
+    </section>
+  </body>
+</html>
