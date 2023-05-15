@@ -1,5 +1,7 @@
 const querystring = require("querystring");
 const sql = require('mssql/msnodesqlv8');
+const connection = require('../');
+
 
 var config = {
   database: 'memory_game',
