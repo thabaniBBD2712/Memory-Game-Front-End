@@ -1,19 +1,20 @@
-const mysql = require('mysql');
+const sql = require('mssql');
 
-const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'password',
-  database: 'my_database',
-});
+const config = {
+  user: 'db_username',
+  password: 'db_password',
+  server: 'db_server', 
+  database: 'db_database',
+};
 
-connection.connect((err) => {
-  if (err) {
-    console.error('Error connecting to database:', err);
-    return;
-  }
+const poolPromise = new sql.ConnectionPool(config)
+  .connect()
+  .then(pool => {
+    console.log('Connected to MSSQL')
+    return pool
+  })
+  .catch(err => console.log('Database Connection Failed! Bad Config: ', err))
 
-  console.log('Connected to database!');
-});
-
-module.exports = connection;
+module.exports = {
+  sql, poolPromise
+}
