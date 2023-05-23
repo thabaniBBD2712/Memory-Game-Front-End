@@ -97,3 +97,9 @@ body {
 .disabled:hover {
   background-color: #ccc;
 }
+
+#loginStatus {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
