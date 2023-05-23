@@ -1,6 +1,7 @@
 const http = require('http');
 const url = require('url');
 const handleLoginRoute = require('./routers/loginRouter');
+const handleSignUpRoute = require('./routers/signUpRoute');
 const handleScoreRoute = require('./routers/addScoreRouter');
 const UserRouter = require('./routers/userRouter.js');
 
@@ -18,6 +19,9 @@ const server = http.createServer((req, res) => {
     UserRouter.routeRequest(req, res);
   } else if (pathname === '/score') {
     handleScoreRoute(req, res);
+  }
+  else if (pathname === '/signup') {
+    handleSignUpRoute(req, res);
   }
    else {
     res.writeHead(404, { 'Content-Type': 'text/plain' });
