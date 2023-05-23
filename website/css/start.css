@@ -13,7 +13,7 @@ body {
 
 header {
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: #c0c0c0;
 }
 
 #navigation {
@@ -36,7 +36,7 @@ header {
     margin-top: 50px;
     flex-wrap: wrap;
     width: 90%;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: #ffffff;
     border-radius: 15px;
     padding: 20px;
 }
@@ -50,18 +50,19 @@ header {
     margin: 20px;
     padding: 20px;
     width: 40%;
-    background-color: rgba(255, 255, 255, 0.1);
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    
 }
 
 .game-description h2 {
-    color: #FFFFFF;
     font-size: 24px;
+    color: #333;;
 }
 
-.game-description p {
-    color: #FFFFFF;
+.game-description p {  
     font-size: 18px;
+    color: #666;
 }
 
 .game-action a {
@@ -70,14 +71,18 @@ header {
     padding: 10px 20px;
     text-decoration: none;
     color: #FFFFFF;
-    background-color: #FF6347;
+    background-color: #796a96;
     border-radius: 5px;
     font-size: 20px;
     transition: background-color 0.3s ease;
 }
+.start-images{
+    height: 5rem;
+    width: 5rem;
+}
 
 .game-action a:hover {
-    background-color: #FF4500;
+    background-color: #796a96
 }
 .footer-content {
     background-color: rgba(0, 0, 0, 0.7);
