@@ -1,16 +1,22 @@
-const http = require('http');
-const path = require('path');
-const LoginRoute = require('./routers/loginRouter');
-const UserRouter = require('./routers/userRouter');
+const http = require("http");
+const url = require("url");
+const handleLoginRoute = require("./routers/loginRouter");
+const loginService = require("./service/loginService");
+const UserRouter = require('./routers/userRouter.js');
 
 const server = http.createServer((req, res) => {
-  if (req.method === 'POST' && req.url === '/login') {
-    LoginRoute(req, res);
-  } else {
+  const { pathname } = url.parse(req.url, true);
+
+  if (pathname === "/login") {
+    handleLoginRoute(req, res);
+  } else if (pathname === "/ola") {
     UserRouter.routeRequest(req, res);
+  } else {
+    res.writeHead(404, { "Content-Type": "text/plain" });
+    res.end("404 Not Found");
   }
 });
 
 server.listen(3000, () => {
-  console.log('Server is running on port 3000');
+  console.log("Server is running on port 3000");
 });
