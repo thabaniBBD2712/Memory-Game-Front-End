@@ -4,22 +4,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login Form</title>
     <link rel="stylesheet" href="../css/signup.css" />
-    <script src="../js/Login.js"></script>
   </head>
   <body>
     <section class="container">
       <section class="form-box">
         <h1 class="title">Login</h1>
         <section id="errorMsg"></section>
-        <form
-          class="signup"
-          name="signupForm"
-          onsubmit="return validateLoginForm()"
-          method="POST"
-        >
+        <form id="loginForm" class="signup" name="signupForm" method="POST">
           <section class="input-group">
             <section class="input-field">
               <input
+                id="email"
                 class="input"
                 type="email"
                 name="email"
@@ -30,6 +25,7 @@
 
             <section class="input-field">
               <input
+                id="password"
                 class="input"
                 type="password"
                 name="password"
@@ -37,22 +33,19 @@
                 placeholder="Password"
               />
             </section>
-
           </section>
 
           <section class="btn-group">
             <button
               class="button login-btn"
               type="submit"
-              onclick="return validateLoginForm();"
             >
               Login
             </button>
           </section>
-          <p class="link">
-            Lost password
-            <a href="https://example.com/password-reset">Click Here!</a>
-          </p>
+          
+          <section id="loginStatus"></section>
+
           <p class="link">
             New here
             <a href="../pages/SignUp.html">Click Here!</a>
@@ -60,5 +53,33 @@
         </form>
       </section>
     </section>
+
+    <script>
+document.getElementById('loginForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+
+  try {
+    const response = await fetch('http://localhost:3000/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: new URLSearchParams({
+        email: email,
+        password: password
+      })
+    });
+
+    const result = await response.text();
+    document.getElementById('loginStatus').textContent = result;
+  } catch (error) {
+    console.error('An error occurred:', error);
+  }
+});
+
+    </script>
   </body>
 </html>

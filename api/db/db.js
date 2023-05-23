@@ -1,9 +1,9 @@
 const sql = require('mssql');
 
 const config = {
-    user: 'sa',
-    password: 'reallyStrongPwd123',
-    server: 'localhost',
+    user: 'root',
+    password: 'Antelope24',
+    server: 'mssqldb.cgj0ywhm1m7p.af-south-1.rds.amazonaws.com',
     database: 'memory_game',
     options: {
       encrypt: false

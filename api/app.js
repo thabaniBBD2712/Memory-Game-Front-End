@@ -1,24 +1,27 @@
 const http = require('http');
+const url = require('url');
+const handleLoginRoute = require('./routers/loginRouter');
 const UserRouter = require('./routers/userRouter.js');
 
-
 const server = http.createServer((req, res) => {
-  if (req.method === 'POST' && req.url === '/signUp.html') {
-    signUpController.handleSignUpRequest(req, res);
-  } else if (req.method === 'GET' && req.url === '/signUp.html') {
-    const filePath = path.join(__dirname, '../../pages/signUp.html');
-    signUpService.serveFile(filePath, 'text/html', res);
-  } else if (req.method === 'GET' && req.url === '/css/signUp.css') {
-    const cssFilePath = path.join(__dirname, '../../css/signUp.css');
-    signUpService.serveFile(cssFilePath, 'text/css', res);
-  } else if (req.method === 'GET' && req.url === '/js/signUpLogic.js') {
-    const jsFilePath = path.join(__dirname, 'js', '../../js/signUpLogic.js');
-    signUpService.serveFile(jsFilePath, 'application/javascript', res);
-  } else {
+  const { pathname } = url.parse(req.url, true);
+
+  
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+  if (pathname === '/login') {
+    handleLoginRoute(req, res);
+  } else if (pathname === '/ola') {
     UserRouter.routeRequest(req, res);
+  } else {
+    res.writeHead(404, { 'Content-Type': 'text/plain' });
+    res.end('404 Not Found');
   }
 });
 
 server.listen(3000, () => {
   console.log('Server is running on port 3000');
 });
+
