@@ -1,8 +1,6 @@
 const { poolPromise, sql } = require('../db/db.js');
 
-const loginUser = async (req, res) => {
-  const { email, password } = req.body;
-
+const loginUser = async (email, password) => {
   try {
     const pool = await poolPromise;
     const query = `
@@ -17,19 +15,13 @@ const loginUser = async (req, res) => {
       .query(query);
 
     if (result.recordset[0].userCount > 0) {
-      console.log('User exists. Allowing login...');
-      res.writeHead(200, { 'Content-Type': 'text/plain' });
-      res.end('Login successful');
-      
+      return 'Login successful';
     } else {
-      console.log('User does not exist. Redirecting to sign-up page...');
-      res.writeHead(401, { 'Content-Type': 'text/plain' });
-      res.end('Invalid email or password');
+      return 'Invalid email or password';
     }
   } catch (error) {
     console.error('Error logging in:', error);
-    res.writeHead(500, { 'Content-Type': 'text/plain' });
-    res.end('An error occurred while logging in.');
+    return 'An error occurred while logging in.';
   }
 };
 

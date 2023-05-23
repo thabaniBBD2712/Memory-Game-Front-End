@@ -1,7 +1,6 @@
 const http = require("http");
 const url = require("url");
 const handleLoginRoute = require("./routers/loginRouter");
-const loginService = require("./service/loginService");
 const UserRouter = require('./routers/userRouter.js');
 
 const server = http.createServer((req, res) => {
