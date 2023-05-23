@@ -71,14 +71,14 @@ const generateGame = async () => {
   const items = shuffle([...picks, ...picks]);
 
   const cards = `
-      <div class="board" style="grid-template-columns: repeat(${dimensions}, auto)">
+      <section class="board" style="grid-template-columns: repeat(${dimensions}, auto)">
           ${items.map(item => `
-              <div class="card">
-                  <div class="card-front"></div>
-                  <div class="card-back"><img src="${item.src.small}" alt=""></div>
-              </div>
+              <section class="card">
+                  <section class="card-front"></section>
+                  <section class="card-back"><img src="${item.src.small}" alt=""></section>
+              </section>
           `).join('')}
-     </div>
+     </section>
   `;
 
   const parser = new DOMParser().parseFromString(cards, 'text/html');
