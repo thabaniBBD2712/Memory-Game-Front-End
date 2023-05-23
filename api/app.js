@@ -1,6 +1,7 @@
 const http = require('http');
 const url = require('url');
 const handleLoginRoute = require('./routers/loginRouter');
+const handleScoreRoute = require('./routers/addScoreRouter');
 const UserRouter = require('./routers/userRouter.js');
 
 const server = http.createServer((req, res) => {
@@ -15,7 +16,10 @@ const server = http.createServer((req, res) => {
     handleLoginRoute(req, res);
   } else if (pathname === '/ola') {
     UserRouter.routeRequest(req, res);
-  } else {
+  } else if (pathname === '/score') {
+    handleScoreRoute(req, res);
+  }
+   else {
     res.writeHead(404, { 'Content-Type': 'text/plain' });
     res.end('404 Not Found');
   }
