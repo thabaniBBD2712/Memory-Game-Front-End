@@ -1,6 +1,6 @@
 class PexelClient {
   async fetchImages(category) {
-    const response = await fetch(`http://localhost:3000/api/images?query=random&page=1&per_page=10`);
+    const response = await fetch(`http://localhost:3001/api/images?query=random&page=1&per_page=10`);
     const data = await response.json();
     return data;
   }
