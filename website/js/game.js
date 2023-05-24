@@ -1,3 +1,5 @@
+
+
 const selectors = {
   boardContainer: document.querySelector(".board-container"),
   board: document.querySelector(".board"),
@@ -14,6 +16,12 @@ const state = {
   totalTime: 0,
   loop: null,
   score: 1000,
+};
+
+let user;
+
+const updateUser = (username) => {
+  user = username;
 };
 
 const shuffle = (array) => {
@@ -175,4 +183,5 @@ const reset = () => {
 };
 
 generateGame();
+console.log(user)
 attachEventListeners();

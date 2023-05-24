@@ -5,8 +5,9 @@ const logScore = async (email, score) => {
     const currentDate = new Date(); 
     const pool = await poolPromise;
     const query = `
-      INSERT INTO Score (player_email, score, achievedOn)
-      VALUES (@email, @score, @date)
+      Update Score
+      SET score = @score,achievedOn=@date
+      WHERE player_email = @email
     `;
     const result = await pool.request()
       .input('email', sql.VarChar(100), email)
@@ -14,10 +15,10 @@ const logScore = async (email, score) => {
       .input('date', sql.Date, currentDate)
       .query(query);
 
-    return 'Score logged successfully';
+    return 'Score updated successfully';
   } catch (error) {
-    console.error('Error logging score:', error);
-    return 'An error occurred while logging score.';
+    console.error('Error updating score:', error);
+    return 'An error occurred while updating score.';
   }
 };
 

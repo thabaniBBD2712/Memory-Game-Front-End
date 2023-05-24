@@ -17,11 +17,11 @@ const signUpUser = async (email, password, firstname, lastname) => {
       return 'Email already exists';
     }
 
-    // Insert new user
     const insertQuery = `
       INSERT INTO Player (email, firstname, lastname, password)
       VALUES (@email, @firstname, @lastname, @password)
     `;
+    
     await pool.request()
       .input('email', sql.VarChar(100), email)
       .input('firstname', sql.VarChar(100), firstname)
@@ -29,6 +29,15 @@ const signUpUser = async (email, password, firstname, lastname) => {
       .input('password', sql.VarChar(100), password)
       .query(insertQuery);
 
+
+    const addPlayerScore = `
+    INSERT INTO Score (player_email)
+    VALUES (@email)
+  `;
+   await pool.request()
+  .input('email', sql.VarChar(100), email)
+  .query(addPlayerScore);
+ 
     return 'User created successfully';
   } catch (error) {
     console.error('Error signing up:', error);
