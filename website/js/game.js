@@ -206,10 +206,8 @@ const attachEventListeners = () => {
   });
 };
 
-const reset = () => {
-  location.reload();
-};
-
+const scores = () => {
+  window.location.href = '../pages/leaderBoard.html';};
 generateGame();
 console.log(state.user)
 attachEventListeners();
