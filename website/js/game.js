@@ -16,13 +16,21 @@ const state = {
   totalTime: 0,
   loop: null,
   score: 1000,
+  user: null
 };
 
-let user;
+function updateUser(email) {
+  state.user = email; 
+  console.log("Updated user:", state.user);
+}
 
-const updateUser = (username) => {
-  user = username;
-};
+const userEmail = localStorage.getItem("userEmail");
+if (userEmail) {
+  updateUser(userEmail);
+} else {
+  window.location.href = "../pages/login.html";
+  console.log("User email not found.");
+}
 
 const shuffle = (array) => {
   const clonedArray = [...array];
@@ -144,7 +152,7 @@ const flipCard = (card) => {
     }, 1000);
   }
   if (!document.querySelectorAll(".card:not(.flipped)").length) {
-    setTimeout(() => {
+    setTimeout(async () => {
       selectors.boardContainer.classList.add("flipped");
       selectors.win.innerHTML = `
               <span class="win-text">
@@ -155,6 +163,26 @@ const flipCard = (card) => {
           `;
 
       clearInterval(state.loop);
+          try{
+           // Call the API to insert user and score into the database
+           const response =await fetch("http://localhost:3000/score", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: new URLSearchParams({
+              email: state.user,
+              score: state.score,
+            }),
+          });
+
+          const result = await response.text();
+          alert(result);
+          console.log(result);
+
+        } catch (error) {
+          console.error("An error occurred:", error);
+        }
     }, 1000);
   }
 };
@@ -183,5 +211,5 @@ const reset = () => {
 };
 
 generateGame();
-console.log(user)
+console.log(state.user)
 attachEventListeners();

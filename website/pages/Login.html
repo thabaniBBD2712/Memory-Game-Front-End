@@ -50,7 +50,6 @@
         </form>
       </section>
     </section>
-    <script src="../js/game.js"></script>
 
     <script>
       document
@@ -78,8 +77,8 @@
               document.getElementById("loginStatus").textContent = result;
               console.log(result);
 
-              if(result==="Login successful"){
-                updateUser(email);
+              if (result === "Login successful") {
+                localStorage.setItem("userEmail", email);
                 window.location.href = '../pages/start.html';
               }
             } catch (error) {
