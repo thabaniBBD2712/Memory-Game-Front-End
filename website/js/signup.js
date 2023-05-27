@@ -25,7 +25,7 @@ document.getElementById("signUpForm").addEventListener("submit", async (e) => {
       document.getElementById("signUpStatus").textContent = result;
 
       if (result === "User created successfully") {
-        window.location.href = "../pages/login.html";
+        window.location = "../pages/login.html";
       }
     } catch (error) {
       console.error("An error occurred:", error);

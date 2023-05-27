@@ -28,7 +28,7 @@ const userEmail = localStorage.getItem("userEmail");
 if (userEmail) {
   updateUser(userEmail);
 } else {
-  window.location.href = "../pages/login.html";
+  window.location = "../pages/login.html";
   console.log("User email not found.");
 }
 
@@ -207,7 +207,7 @@ const attachEventListeners = () => {
 };
 
 const scores = () => {
-  window.location.href = '../pages/leaderBoard.html';};
+  window.location = '../pages/leaderBoard.html';};
 generateGame();
 console.log(state.user)
 attachEventListeners();
