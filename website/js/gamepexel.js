@@ -23,13 +23,6 @@ function updateUser(email) {
   console.log("Updated user:", state.user);
 }
 
-/*const userEmail = localStorage.getItem("userEmail");
-if (userEmail) {
-  updateUser(userEmail);
-} else {
-  window.location.href = "../pages/login.html";
-  console.log("User email not found.");
-}*/
 
 const shuffle = (array) => {
   const clonedArray = [...array];
@@ -211,7 +204,7 @@ const attachEventListeners = () => {
 };
 
 const scores = () => {
-  window.location.href = '../pages/leaderBoard.html';
+  window.location = '../pages/leaderBoard.html';
 };
 
 async function initGame() {
