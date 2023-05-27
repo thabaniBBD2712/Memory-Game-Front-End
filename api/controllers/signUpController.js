@@ -1,4 +1,5 @@
 const { poolPromise, sql } = require('../db/db.js');
+const crypto = require('crypto');
 
 const signUpUser = async (email, password, firstname, lastname) => {
   try {
@@ -17,16 +18,20 @@ const signUpUser = async (email, password, firstname, lastname) => {
       return 'Email already exists';
     }
 
+    const hash = crypto.createHash('sha256');
+    hash.update(password);
+    const hashedPassword = hash.digest('hex');
+
     const insertQuery = `
       INSERT INTO Player (email, firstname, lastname, password)
-      VALUES (@email, @firstname, @lastname, @password)
+      VALUES (@email, @firstname, @lastname, @hashedPassword)
     `;
     
     await pool.request()
       .input('email', sql.VarChar(100), email)
       .input('firstname', sql.VarChar(100), firstname)
       .input('lastname', sql.VarChar(100), lastname)
-      .input('password', sql.VarChar(100), password)
+      .input('hashedPassword', sql.VarChar(255), hashedPassword)
       .query(insertQuery);
 
 
@@ -46,4 +51,3 @@ const signUpUser = async (email, password, firstname, lastname) => {
 };
 
 module.exports = { signUpUser };
-
