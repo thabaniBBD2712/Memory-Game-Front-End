@@ -8,22 +8,26 @@ const axios = require('axios');
 
 const app = express();
 app.use(cors());
+
+app.get('/', (req, res) => {
+  res.send('Welcome to the Express server!');
+});
+
 app.get('/api/images', async (req, res) => {
-    const url = `https://api.pexels.com/v1/search?query=${req.query.query}&page=${req.query.page}&per_page=${req.query.per_page}`;
-    try {
-      const response = await axios.get(url, {
-        headers: {
-          Authorization: apikey
-        }
-        
-      });
-      console.log(response.data.photos);
-      res.json(response.data.photos);
-    } catch (error) {
-      console.error(`Error: ${error}`);
-      res.status(500).json({ message: 'Server error' });
-    }
+  const url = `https://api.pexels.com/v1/search?query=${req.query.query}&page=${req.query.page}&per_page=${req.query.per_page}`;
+  try {
+    const response = await axios.get(url, {
+      headers: {
+        Authorization: apikey
+      }
+    });
+    console.log(response.data.photos);
+    res.json(response.data.photos);
+  } catch (error) {
+    console.error(`Error: ${error}`);
+    res.status(500).json({ message: 'Server error' });
+  }
 });
 
 const server = http.createServer(app);
-server.listen(port, 'localhost', () => console.log('Server started'));
+server.listen(port, () => console.log(`Server started on port ${port}`));
