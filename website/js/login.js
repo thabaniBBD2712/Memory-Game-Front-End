@@ -43,11 +43,13 @@ errorMsg.textContent = "";
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 if (!emailRegex.test(email)) {
   errorMsg.textContent = "Please enter a valid email address.";
+  errorMsg.style.color = "red";
   return false;
 }
 
 if (password.trim() === "") {
   errorMsg.textContent = "Please enter a password.";
+  errorMsg.style.color = "red";
   return false;
 }
 
