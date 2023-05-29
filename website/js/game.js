@@ -21,7 +21,6 @@ const state = {
 
 function updateUser(email) {
   state.user = email; 
-  console.log("Updated user:", state.user);
 }
 
 const userEmail = localStorage.getItem("userEmail");
@@ -29,7 +28,6 @@ if (userEmail) {
   updateUser(userEmail);
 } else {
   window.location = "../pages/login.html";
-  console.log("User email not found.");
 }
 
 const shuffle = (array) => {
@@ -164,8 +162,7 @@ const flipCard = (card) => {
 
       clearInterval(state.loop);
           try{
-           // Call the API to insert user and score into the database
-           const response =await fetch("http://localhost:3000/score", {
+           const response =await fetch("https://thabanigame.azurewebsites.net/score", {
             method: "POST",
             headers: {
               "Content-Type": "application/x-www-form-urlencoded",
@@ -177,8 +174,6 @@ const flipCard = (card) => {
           });
 
           const result = await response.text();
-          alert(result);
-          console.log(result);
 
         } catch (error) {
           console.error("An error occurred:", error);
@@ -209,5 +204,4 @@ const attachEventListeners = () => {
 const scores = () => {
   window.location = '../pages/leaderBoard.html';};
 generateGame();
-console.log(state.user)
 attachEventListeners();
